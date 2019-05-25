@@ -1,0 +1,11 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t ashutoshnith/spring5webapp .
+
+
+script:
+  - docker run ashutoshnith/spring5webapp mvn test -- --coverage
