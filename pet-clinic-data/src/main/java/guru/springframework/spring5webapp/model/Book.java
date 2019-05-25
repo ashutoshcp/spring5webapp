@@ -1,7 +1,7 @@
 package guru.springframework.spring5webapp.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,45 +11,42 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import java.util.HashSet;
-import java.util.Set;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
 @EqualsAndHashCode
 public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @EqualsAndHashCode.Exclude
-    private String title;
-    @EqualsAndHashCode.Exclude
-    private String isbn;
-    @OneToOne
-    @EqualsAndHashCode.Exclude
-    private Publisher publisher;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-    @ManyToMany
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
-    inverseJoinColumns = @JoinColumn(name = "author_id"))
-    @EqualsAndHashCode.Exclude
-    private Set<Author> authors = new HashSet<>();
+  @EqualsAndHashCode.Exclude private String title;
+  @EqualsAndHashCode.Exclude private String isbn;
+  @OneToOne @EqualsAndHashCode.Exclude private Publisher publisher;
 
-    public Book() {
-    }
+  @ManyToMany
+  @JoinTable(
+      name = "author_book",
+      joinColumns = @JoinColumn(name = "book_id"),
+      inverseJoinColumns = @JoinColumn(name = "author_id"))
+  @EqualsAndHashCode.Exclude
+  private Set<Author> authors = new HashSet<>();
 
-    public Book(String title, String isbn, Publisher publisher) {
-        this.title = title;
-        this.isbn = isbn;
-        this.publisher = publisher;
-    }
+  public Book() {}
 
-    public Book(String title, String isbn, Publisher publisher, Set<Author> authors) {
-        this.title = title;
-        this.isbn = isbn;
-        this.publisher = publisher;
-        this.authors = authors;
-    }
+  public Book(String title, String isbn, Publisher publisher) {
+    this.title = title;
+    this.isbn = isbn;
+    this.publisher = publisher;
+  }
 
-
+  public Book(String title, String isbn, Publisher publisher, Set<Author> authors) {
+    this.title = title;
+    this.isbn = isbn;
+    this.publisher = publisher;
+    this.authors = authors;
+  }
 }

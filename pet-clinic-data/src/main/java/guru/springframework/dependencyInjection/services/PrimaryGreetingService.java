@@ -2,20 +2,18 @@ package guru.springframework.dependencyInjection.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * Created by jt on 5/24/17.
- */
+/** Created by jt on 5/24/17. */
 public class PrimaryGreetingService implements GreetingService {
 
-    private GreetingRepository greetingRepository;
+  private GreetingRepository greetingRepository;
 
-    @Autowired
-    public PrimaryGreetingService(GreetingRepository greetingRepository) {
-        this.greetingRepository = greetingRepository;
-    }
+  @Autowired
+  public PrimaryGreetingService(GreetingRepository greetingRepository) {
+    this.greetingRepository = greetingRepository;
+  }
 
-    @Override
-    public String sayGreeting() {
-        return greetingRepository.getEnglishGreeting();
-    }
+  @Override
+  public String sayGreeting() {
+    return greetingRepository.getEnglishGreeting();
+  }
 }

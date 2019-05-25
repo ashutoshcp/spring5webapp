@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/vets")
 public class VetController {
 
-    @RequestMapping({"", "/", "/index", "/index.html"})
-    public String listVets() {
-        return "vets/index";
-    }
+  @RequestMapping({"", "/", "/index", "/index.html"})
+  public String listVets() {
+    return "vets/index";
+  }
 }

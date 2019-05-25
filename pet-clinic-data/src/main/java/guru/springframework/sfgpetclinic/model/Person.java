@@ -6,6 +6,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Person extends BaseEntity {
-    private String firstName;
-    private String lastName;
+  private String firstName;
+  private String lastName;
 }
